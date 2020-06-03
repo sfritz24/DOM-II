@@ -48,3 +48,36 @@ function on(event){
 
 newBtn.addEventListener('click', on);
 //end of add image back button
+
+//add zoom to a picture
+function zoom(event){
+    event.preventDefault();
+    scale += event.deltaY * -0.01;
+    scale = Math.min(Math.max(.125, scale), 4);
+    imgFour.style.transform = `scale(${scale})`;
+};
+
+let scale = 1;
+imgFour.addEventListener('wheel', zoom);
+//end zoom to picture
+
+//change color of something when the mouse presses that element
+const firstDest = document.querySelector('.destination:nth-of-type(1) h4');
+
+firstDest.addEventListener('mousedown', (event) => {
+    event.target.style.color = 'blue';
+});
+//end of change color
+
+//add hover effect
+const secDest = document.querySelector('.destination:nth-of-type(2) p');
+
+secDest.addEventListener('mouseenter', event =>{
+    event.target.style.border = '2px dashed #17A2B8';
+});
+//end of the first part of the hover
+
+//start of second part of hover
+secDest.addEventListener('mouseleave', event =>{
+    event.target.style.border = 'none';
+});
