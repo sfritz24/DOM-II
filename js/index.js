@@ -2,10 +2,10 @@
 
 //added remove all images button
 const newDiv = document.createElement('div');
-const header = document.querySelector('.nav-container');
+const nav = document.querySelector('.nav-container');
 const newButton = document.createElement('button');
 
-header.append(newDiv);
+nav.append(newDiv);
 
 const divInfo = document.querySelector('.nav-container div');
 divInfo.append(newButton);
@@ -65,6 +65,10 @@ imgFour.addEventListener('wheel', zoom);
 const firstDest = document.querySelector('.destination:nth-of-type(1) h4');
 
 firstDest.addEventListener('mousedown', (event) => {
+    event.target.style.color = 'red';
+});
+
+firstDest.addEventListener('mouseup', event =>{
     event.target.style.color = 'blue';
 });
 //end of change color
@@ -81,3 +85,51 @@ secDest.addEventListener('mouseenter', event =>{
 secDest.addEventListener('mouseleave', event =>{
     event.target.style.border = 'none';
 });
+//end of hover
+
+//add window live size info
+const newDivTwo = document.createElement('div');
+
+nav.prepend(newDivTwo);
+
+const newH4 = document.createElement('h4');
+const newPOne = document.createElement('p');
+const newPTwo = document.createElement('p');
+
+const windowInfo = document.querySelector('div:nth-of-type(1)');
+windowInfo.append(newH4);
+windowInfo.append(newPOne);
+windowInfo.append(newPTwo);
+
+const windowH = document.querySelector('div:nth-of-type(1) h4');
+const windowPOne = document.querySelector('div:nth-of-type(1) p:nth-of-type(1)');
+const windowPTwo = document.querySelector('div:nth-of-type(1) p:nth-of-type(2)');
+
+windowH.textContent = 'Window Size';
+windowPOne.innerHTML = 'Height: <span id="height"></span>';
+windowPTwo.innerHTML = 'Width: <span id="width"></span>';
+
+const heightOutput = document.querySelector('#height');
+const widthOutput = document.querySelector('#width');
+
+window.addEventListener('resize', liveResize =>{
+    heightOutput.textContent = window.innerHeight;
+    widthOutput.textContent = window.innerWidth;
+});
+//end live resize
+
+//add copy effect that makes whatever you copied to be converted to caps when pasted
+const headline = document.querySelector('.intro h2');
+
+headline.addEventListener('copy', event =>{
+    const selection = document.getSelection();
+    event.clipboardData.setData('text/plain', selection.toString().toUpperCase());
+    event.preventDefault();
+});
+//end of copy thing
+
+//adding something to the conosle
+document.addEventListener('keydown', message =>{
+    console.log(`I did a lot and it was very tedious and I did not like this project. I'm lying! I totally did! It really was fun. This last event is meant to only be seen in the console. I don't want it to do anything on the html.`);
+});
+//
