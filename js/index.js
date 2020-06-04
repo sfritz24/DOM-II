@@ -71,6 +71,15 @@ firstDest.addEventListener('mousedown', (event) => {
 firstDest.addEventListener('mouseup', event =>{
     event.target.style.color = 'blue';
 });
+
+// for(let logo of document.getElementsByTagName('h1')) {
+//     logo.addEventListener('mousedown', event => {
+//         event.target.style.color ='blue';
+//     });
+//     logo.addEventListener('mouseup', event => {
+//         event.target.style.color = 'red';
+//     });
+// };
 //end of change color
 
 //add hover effect
@@ -132,4 +141,20 @@ headline.addEventListener('copy', event =>{
 document.addEventListener('keydown', message =>{
     console.log(`I did a lot and it was very tedious and I did not like this project. I'm lying! I totally did! It really was fun. This last event is meant to only be seen in the console. I don't want it to do anything on the html.`);
 });
-//
+//end of secret message
+
+//adding the stopPropagation
+function stop(){
+    const thirdDestDiv = document.querySelector('div .destination:nth-of-type(3)');
+    const thirdDestP = thirdDestDiv.querySelector('p');
+
+    thirdDestDiv.addEventListener('click', event =>{
+        thirdDestDiv.style.backgroundColor = 'aqua';
+    });
+    thirdDestP.addEventListener('click', event =>{
+        thirdDestP.style.color = 'turquoise';
+        event.stopPropagation();
+    });
+};
+
+stop();
